@@ -5,6 +5,27 @@ import java.util.List;
 
 public class Functions extends Vars {
 
+    public static void setup() {
+        btn2nd.setEnabled(false);
+        btnPi.setEnabled(false);
+        btn_e.setEnabled(false);
+        btnSquareOf_x.setEnabled(false);
+        btnInverseOf_x.setEnabled(false);
+        btnAbsoluteOf_x.setEnabled(false);
+        btnExponent.setEnabled(false);
+        btnMod.setEnabled(false);
+        btnRootOf_x.setEnabled(false);
+        btnOpenParenthesis.setEnabled(false);
+        btnCloseParenthesis.setEnabled(false);
+        btn_nFactorial.setEnabled(false);
+        btn_xToPower_y.setEnabled(false);
+        btn10ToPower_x.setEnabled(false);
+        btn_log.setEnabled(false);
+        btnNaturalLog.setEnabled(false);
+        btnDot.setEnabled(false);
+
+    }
+
     /*If the input isn't 0, it sets the input to 0
      * but if it was already 0 and the output isn't null, it sets it to null
      * So if you want to clear the whole display, you'll have to press the "C" button twice*/

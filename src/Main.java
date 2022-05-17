@@ -12,6 +12,7 @@ public class Main extends Functions {
      */
     public Main() {
         initialize();
+        setup();
     }
 
     /**
@@ -556,8 +557,10 @@ public class Main extends Functions {
                     intN *= -1;
                 }
 
-                if (isDouble) txtInput.setText(String.valueOf(doubleN));
-                else txtInput.setText(String.valueOf(intN));
+                if (isDouble) number = String.valueOf(doubleN);
+                else number = String.valueOf(intN);
+
+                txtInput.setText(formatter(number));
             }
 
         });
