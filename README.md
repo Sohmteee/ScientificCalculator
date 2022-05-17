@@ -1,8 +1,4 @@
 # ScientificCalculator
-This GUI project is still in development. 
-It'll be updated every two days or so. 
-I copied the UI of the Windows Calculator so they look quite similar to each other :)
-
 So far, these are the functions available: 
 1. Basic arithematic operations (+, -, *, and /). These operations comply to the BODMAS rule
 2. Signing and unsigning numbers with the ± button
