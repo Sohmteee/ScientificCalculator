@@ -109,22 +109,27 @@ public class Main extends Functions {
         btnDel = new JButton("del");
         btnDel.setRequestFocusEnabled(false);
         btnDel.addActionListener(e -> {
-            //the \b method wasn't working so I had to use this method instead
-            if (txtInput.getText().length() > 0 & !txtInput.getText().equals("0")) {
+            //the \b method wasn't working, so I had to use this method instead
+            if (number.length() > 0 & !number.equals("0")) {
                 List<Character> newInput = new ArrayList<>();
 
-                for (char c : txtInput.getText().toCharArray()) {
-                    newInput.add(c);
-                }
+                //convert the number to a char list and remove the last element
+                for (char c : number.toCharArray()) newInput.add(c);
                 newInput.remove(newInput.size() - 1);
 
+                //convert the char list to a char array so that it can then be converted to a string
                 char[] newInputString = new char[newInput.size()];
 
                 for (int i = 0; i < newInput.size(); i++) {
                     newInputString[i] = newInput.get(i);
                 }
 
-                txtInput.setText(new String(newInputString));
+                /*if the string is empty, number is set to "0"
+                * otherwise, number is set to the new string
+                * and then the number is displayed as the new input*/
+                number = new String(newInputString).isEmpty() ? "0" : new String(newInputString);
+                txtInput.setText(formatter(number));
+
             }
         });
         btnDel.setBorder(null);
@@ -187,7 +192,7 @@ public class Main extends Functions {
 
 
         //third row
-        btnRootOf_x = new JButton("2\u221Ax");
+        btnRootOf_x = new JButton("\u221Ax");
         btnRootOf_x.setRequestFocusEnabled(false);
         btnRootOf_x.addActionListener(e -> {
         });
@@ -268,10 +273,17 @@ public class Main extends Functions {
         btnSeven = new JButton("7");
         btnSeven.setRequestFocusEnabled(false);
         btnSeven.addActionListener(e -> {
+            btnC.setText("CE");
             if (clearInput) {
-                txtInput.setText("7");
+                number = "7";
                 clearInput = false;
-            } else txtInput.setText(txtInput.getText() + "7");
+            } else {
+                if (!isTooLong(Long.parseLong(number), 7)) {
+                    number += "7";
+                }
+            }
+            txtInput.setText(formatter(number));
+
         });
         btnSeven.setBorder(null);
         btnSeven.setBackground(Color.WHITE);
@@ -282,10 +294,17 @@ public class Main extends Functions {
         btnEight = new JButton("8");
         btnEight.setRequestFocusEnabled(false);
         btnEight.addActionListener(e -> {
+            btnC.setText("CE");
             if (clearInput) {
-                txtInput.setText("8");
+                number = "8";
                 clearInput = false;
-            } else txtInput.setText(txtInput.getText() + "8");
+            } else {
+                if (!isTooLong(Long.parseLong(number), 8)) {
+                    number += "8";
+                }
+            }
+            txtInput.setText(formatter(number));
+
         });
         btnEight.setBorder(null);
         btnEight.setBackground(Color.WHITE);
@@ -296,10 +315,17 @@ public class Main extends Functions {
         btnNine = new JButton("9");
         btnNine.setRequestFocusEnabled(false);
         btnNine.addActionListener(e -> {
+            btnC.setText("CE");
             if (clearInput) {
-                txtInput.setText("9");
+                number = "9";
                 clearInput = false;
-            } else txtInput.setText(txtInput.getText() + "9");
+            } else {
+                if (!isTooLong(Long.parseLong(number), 9)) {
+                    number += "9";
+                }
+            }
+            txtInput.setText(formatter(number));
+
         });
         btnNine.setBorder(null);
         btnNine.setBackground(Color.WHITE);
@@ -336,10 +362,17 @@ public class Main extends Functions {
         btnFour = new JButton("4");
         btnFour.setRequestFocusEnabled(false);
         btnFour.addActionListener(e -> {
+            btnC.setText("CE");
             if (clearInput) {
-                txtInput.setText("4");
+                number = "4";
                 clearInput = false;
-            } else txtInput.setText(txtInput.getText() + "4");
+            } else {
+                if (!isTooLong(Long.parseLong(number), 4)) {
+                    number += "4";
+                }
+            }
+            txtInput.setText(formatter(number));
+
         });
         btnFour.setBorder(null);
         btnFour.setBackground(Color.WHITE);
@@ -350,10 +383,17 @@ public class Main extends Functions {
         btnFive = new JButton("5");
         btnFive.setRequestFocusEnabled(false);
         btnFive.addActionListener(e -> {
+            btnC.setText("CE");
             if (clearInput) {
-                txtInput.setText("5");
+                number = "5";
                 clearInput = false;
-            } else txtInput.setText(txtInput.getText() + "5");
+            } else {
+                if (!isTooLong(Long.parseLong(number), 5)) {
+                    number += "5";
+                }
+            }
+            txtInput.setText(formatter(number));
+
         });
         btnFive.setBorder(null);
         btnFive.setBackground(Color.WHITE);
@@ -364,10 +404,17 @@ public class Main extends Functions {
         btnSix = new JButton("6");
         btnSix.setRequestFocusEnabled(false);
         btnSix.addActionListener(e -> {
+            btnC.setText("CE");
             if (clearInput) {
-                txtInput.setText("6");
+                number = "6";
                 clearInput = false;
-            } else txtInput.setText(txtInput.getText() + "6");
+            } else {
+                if (!isTooLong(Long.parseLong(number), 6)) {
+                    number += "6";
+                }
+            }
+            txtInput.setText(formatter(number));
+
         });
         btnSix.setBorder(null);
         btnSix.setBackground(Color.WHITE);
@@ -404,10 +451,17 @@ public class Main extends Functions {
         btnOne = new JButton("1");
         btnOne.setRequestFocusEnabled(false);
         btnOne.addActionListener(e -> {
+            btnC.setText("CE");
             if (clearInput) {
-                txtInput.setText("1");
+                number = "1";
                 clearInput = false;
-            } else txtInput.setText(txtInput.getText() + "1");
+            } else {
+                if (!isTooLong(Long.parseLong(number), 1)) {
+                    number += "1";
+                }
+            }
+            txtInput.setText(formatter(number));
+
         });
         btnOne.setBorder(null);
         btnOne.setBackground(Color.WHITE);
@@ -418,10 +472,17 @@ public class Main extends Functions {
         btnTwo = new JButton("2");
         btnTwo.setRequestFocusEnabled(false);
         btnTwo.addActionListener(e -> {
+            btnC.setText("CE");
             if (clearInput) {
-                txtInput.setText("2");
+                number = "2";
                 clearInput = false;
-            } else txtInput.setText(txtInput.getText() + "2");
+            } else {
+                if (!isTooLong(Long.parseLong(number), 2)) {
+                    number += "2";
+                }
+            }
+            txtInput.setText(formatter(number));
+
         });
         btnTwo.setBorder(null);
         btnTwo.setBackground(Color.WHITE);
@@ -432,10 +493,17 @@ public class Main extends Functions {
         btnThree = new JButton("3");
         btnThree.setRequestFocusEnabled(false);
         btnThree.addActionListener(e -> {
+            btnC.setText("CE");
             if (clearInput) {
-                txtInput.setText("3");
+                number = "3";
                 clearInput = false;
-            } else txtInput.setText(txtInput.getText() + "3");
+            } else {
+                if (!isTooLong(Long.parseLong(number), 3)) {
+                    number += 3;
+                }
+            }
+            txtInput.setText(formatter(number));
+
         });
         btnThree.setBorder(null);
         btnThree.setBackground(Color.WHITE);
@@ -502,7 +570,13 @@ public class Main extends Functions {
         btnZero = new JButton("0");
         btnZero.setRequestFocusEnabled(false);
         btnZero.addActionListener(e -> {
-            if (!clearInput) txtInput.setText(txtInput.getText() + "0");
+            if (!clearInput) {
+                btnC.setText("CE");
+                if (!isTooLong(Long.parseLong(number), 0)) {
+                    number += "0";
+                    txtInput.setText(formatter(number));
+                }
+            }
         });
         btnZero.setBorder(null);
         btnZero.setBackground(Color.WHITE);
@@ -514,7 +588,9 @@ public class Main extends Functions {
         btnDot.setRequestFocusEnabled(false);
         btnDot.addActionListener(e -> {
             if (!isDecimal) {
-                txtInput.setText(txtInput.getText() + ".");
+                btnC.setText("CE");
+                number += ".";
+                txtInput.setText(formatter(number));
                 isDecimal = true;
                 clearInput = false;
             }

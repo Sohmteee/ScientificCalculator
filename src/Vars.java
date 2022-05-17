@@ -12,7 +12,9 @@ public class Vars {
 
     public static Operator add = new Operator(), subtract = new Operator(),
             multiply = new Operator(), divide = new Operator(), equals = new Operator();
-    public static boolean clearInput = true, isDouble = false, isDecimal = false, shownAnswer = false;
+    public static boolean clearInput = true, isDouble = false,
+            isDecimal = false, shownAnswer = false;
     public static double answer = 0, nextNumber = 0;
-    public static int numberOfOpenParentheses = 0, numberOfClosedParentheses = 0;
+    public static int  numberOfOpenParentheses = 0, numberOfClosedParentheses = 0;
+    public static String number = "0";
 }
