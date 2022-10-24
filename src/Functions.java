@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("SuspiciousListRemoveInLoop")
 public class Functions extends Vars {
 
     public static void setup() {
@@ -22,7 +23,7 @@ public class Functions extends Vars {
         btn10ToPower_x.setEnabled(false);
         btn_log.setEnabled(false);
         btnNaturalLog.setEnabled(false);
-        btnDot.setEnabled(false);
+        btnDot.setEnabled(true);
 
     }
 
@@ -39,6 +40,7 @@ public class Functions extends Vars {
             txtOutput.setText(null);
         }
         resetBooleans();
+
     }
 
     //this resets all the booleans to their "default" values
@@ -56,8 +58,10 @@ public class Functions extends Vars {
         if (shownAnswer) {
             txtOutput.setText("");
             answer = Double.parseDouble(txtInput.getText());
+            number = String.valueOf(((int) answer == answer)? (int) answer : answer);
             shownAnswer = false;
         }
+
         //if the answer hasn't been shown yet, the whole expression is solved using BOD-MAS
         else answer = evaluateString(txtOutput.getText() + number);
 
@@ -75,10 +79,11 @@ public class Functions extends Vars {
             shownAnswer = true;
 
             //and the answer is displayed as the input
-            txtInput.setText(formatter(String.valueOf(answer)));
+            txtInput.setText(format(String.valueOf(answer)));
         }
 
-        txtInput.setText(formatter(String.valueOf(answer)));
+        txtInput.setText(format(String.valueOf(answer)));
+
     }
 
     public static double evaluateString(String expression) {
@@ -174,13 +179,28 @@ public class Functions extends Vars {
 
     }
 
-    public static String formatter(String number) {
+    public static String changeOperator(String equation, Operator operator) {
+        char[] equationChar = equation.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < equationChar.length - 3; i++) {
+            stringBuilder.append(equationChar[i]);
+        }
+
+//        stringBuilder.append(" ").append(operator.operatorSign()).append(" ");
+
+        equation = String.valueOf(stringBuilder);
+
+        return  equation;
+    }
+
+    public static String format(String number) {
         double amount = Double.parseDouble(number);
         DecimalFormat formatter = new DecimalFormat("#,###.##########");
         return formatter.format(amount);
     }
 
-    public static boolean isTooLong(long l, int i) {
+    public static boolean isTooLong(double l, int i) {
         return (String.valueOf(l + i).length() > 15);
     }
 

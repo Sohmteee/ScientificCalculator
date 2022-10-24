@@ -10,10 +10,10 @@ public class Vars {
             btn_log, btnOne, btnTwo, btnThree, btnAddition,
             btnNaturalLog, btnPlusMinus, btnZero, btnDot, btnEquals;
 
-    public static Operator add = new Operator(), subtract = new Operator(),
-            multiply = new Operator(), divide = new Operator(), equals = new Operator();
+    public static Operator add = new Operator("+"), subtract = new Operator("-"),
+            multiply = new Operator("\u00D7"), divide = new Operator("\u00F7"), equals = new Operator("=");
     public static boolean clearInput = true, isDouble = false,
-            isDecimal = false, shownAnswer = false;
+            isDecimal = false, shownAnswer = false, hasOperator = false;
     public static double answer = 0, nextNumber = 0;
     public static int  numberOfOpenParentheses = 0, numberOfClosedParentheses = 0;
     public static String number = "0";

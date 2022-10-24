@@ -1,5 +1,2 @@
-public class Operator {
-
-    public Operator() {
-    }
+public record Operator(String operatorSign) {
 }

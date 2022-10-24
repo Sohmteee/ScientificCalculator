@@ -129,7 +129,7 @@ public class Main extends Functions {
                 * otherwise, number is set to the new string
                 * and then the number is displayed as the new input*/
                 number = new String(newInputString).isEmpty() ? "0" : new String(newInputString);
-                txtInput.setText(formatter(number));
+                txtInput.setText(format(number));
 
             }
         });
@@ -248,7 +248,7 @@ public class Main extends Functions {
         btnDivision = new JButton("\u00F7");
         btnDivision.setRequestFocusEnabled(false);
         btnDivision.addActionListener(e -> {
-            if (!clearInput) {
+            if (!clearInput || shownAnswer) {
                 operator(divide);
                 resetBooleans();
             }
@@ -279,11 +279,11 @@ public class Main extends Functions {
                 number = "7";
                 clearInput = false;
             } else {
-                if (!isTooLong(Long.parseLong(number), 7)) {
+                if (!isTooLong(Double.parseDouble(number), 7)) {
                     number += "7";
                 }
             }
-            txtInput.setText(formatter(number));
+            txtInput.setText(format(number));
 
         });
         btnSeven.setBorder(null);
@@ -300,11 +300,11 @@ public class Main extends Functions {
                 number = "8";
                 clearInput = false;
             } else {
-                if (!isTooLong(Long.parseLong(number), 8)) {
+                if (!isTooLong(Double.parseDouble(number), 8)) {
                     number += "8";
                 }
             }
-            txtInput.setText(formatter(number));
+            txtInput.setText(format(number));
 
         });
         btnEight.setBorder(null);
@@ -321,11 +321,11 @@ public class Main extends Functions {
                 number = "9";
                 clearInput = false;
             } else {
-                if (!isTooLong(Long.parseLong(number), 9)) {
+                if (!isTooLong(Double.parseDouble(number), 9)) {
                     number += "9";
                 }
             }
-            txtInput.setText(formatter(number));
+            txtInput.setText(format(number));
 
         });
         btnNine.setBorder(null);
@@ -337,7 +337,7 @@ public class Main extends Functions {
         btnMultiplication = new JButton("\u00D7");
         btnMultiplication.setRequestFocusEnabled(false);
         btnMultiplication.addActionListener(e -> {
-            if (!clearInput) {
+            if (!clearInput || shownAnswer) {
                 operator(multiply);
                 resetBooleans();
             }
@@ -368,11 +368,11 @@ public class Main extends Functions {
                 number = "4";
                 clearInput = false;
             } else {
-                if (!isTooLong(Long.parseLong(number), 4)) {
+                if (!isTooLong(Double.parseDouble(number), 4)) {
                     number += "4";
                 }
             }
-            txtInput.setText(formatter(number));
+            txtInput.setText(format(number));
 
         });
         btnFour.setBorder(null);
@@ -389,11 +389,11 @@ public class Main extends Functions {
                 number = "5";
                 clearInput = false;
             } else {
-                if (!isTooLong(Long.parseLong(number), 5)) {
+                if (!isTooLong(Double.parseDouble(number), 5)) {
                     number += "5";
                 }
             }
-            txtInput.setText(formatter(number));
+            txtInput.setText(format(number));
 
         });
         btnFive.setBorder(null);
@@ -410,11 +410,11 @@ public class Main extends Functions {
                 number = "6";
                 clearInput = false;
             } else {
-                if (!isTooLong(Long.parseLong(number), 6)) {
+                if (!isTooLong(Double.parseDouble(number), 6)) {
                     number += "6";
                 }
             }
-            txtInput.setText(formatter(number));
+            txtInput.setText(format(number));
 
         });
         btnSix.setBorder(null);
@@ -426,7 +426,7 @@ public class Main extends Functions {
         btnSubtraction = new JButton("\u2013");
         btnSubtraction.setRequestFocusEnabled(false);
         btnSubtraction.addActionListener(e -> {
-            if (!clearInput) {
+            if (!clearInput || shownAnswer) {
                 operator(subtract);
                 resetBooleans();
             }
@@ -457,11 +457,11 @@ public class Main extends Functions {
                 number = "1";
                 clearInput = false;
             } else {
-                if (!isTooLong(Long.parseLong(number), 1)) {
+                if (!isTooLong(Double.parseDouble(number), 1)) {
                     number += "1";
                 }
             }
-            txtInput.setText(formatter(number));
+            txtInput.setText(format(number));
 
         });
         btnOne.setBorder(null);
@@ -478,11 +478,11 @@ public class Main extends Functions {
                 number = "2";
                 clearInput = false;
             } else {
-                if (!isTooLong(Long.parseLong(number), 2)) {
+                if (!isTooLong(Double.parseDouble(number), 2)) {
                     number += "2";
                 }
             }
-            txtInput.setText(formatter(number));
+            txtInput.setText(format(number));
 
         });
         btnTwo.setBorder(null);
@@ -499,11 +499,11 @@ public class Main extends Functions {
                 number = "3";
                 clearInput = false;
             } else {
-                if (!isTooLong(Long.parseLong(number), 3)) {
+                if (!isTooLong(Double.parseDouble(number), 3)) {
                     number += 3;
                 }
             }
-            txtInput.setText(formatter(number));
+            txtInput.setText(format(number));
 
         });
         btnThree.setBorder(null);
@@ -515,9 +515,10 @@ public class Main extends Functions {
         btnAddition = new JButton("+");
         btnAddition.setRequestFocusEnabled(false);
         btnAddition.addActionListener(e -> {
-            if (!clearInput) {
+            if (!clearInput || shownAnswer) {
                 operator(add);
                 resetBooleans();
+
             }
         });
         btnAddition.setBorder(null);
@@ -560,7 +561,7 @@ public class Main extends Functions {
                 if (isDouble) number = String.valueOf(doubleN);
                 else number = String.valueOf(intN);
 
-                txtInput.setText(formatter(number));
+                txtInput.setText(format(number));
             }
 
         });
@@ -577,7 +578,7 @@ public class Main extends Functions {
                 btnC.setText("CE");
                 if (!isTooLong(Long.parseLong(number), 0)) {
                     number += "0";
-                    txtInput.setText(formatter(number));
+                    txtInput.setText(format(number));
                 }
             }
         });
@@ -590,10 +591,10 @@ public class Main extends Functions {
         btnDot = new JButton(".");
         btnDot.setRequestFocusEnabled(false);
         btnDot.addActionListener(e -> {
-            if (!isDecimal) {
+            if (!isDecimal || txtInput.getText().equals("0")) {
                 btnC.setText("CE");
                 number += ".";
-                txtInput.setText(formatter(number));
+                txtInput.setText(format(number));
                 isDecimal = true;
                 clearInput = false;
             }
