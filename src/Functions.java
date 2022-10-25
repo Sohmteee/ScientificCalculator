@@ -52,13 +52,15 @@ public class Functions extends Vars {
 
     public static void operator(Operator operator) {
 
+        var format = new DecimalFormat("#.##");
+
         /*if shownAnswer is true (if the answer has been displayed after pressing the equals button)
         * the upper part of the display is cleared and the answer is set to whatever number that was inputted
         */
         if (shownAnswer) {
             txtOutput.setText("");
             answer = Double.parseDouble(txtInput.getText());
-            number = String.valueOf(((int) answer == answer)? (int) answer : answer);
+            number = format(String.valueOf(answer));
             shownAnswer = false;
         }
 
@@ -80,6 +82,7 @@ public class Functions extends Vars {
 
             //and the answer is displayed as the input
             txtInput.setText(format(String.valueOf(answer)));
+            number = String.valueOf((int) answer);
         }
 
         txtInput.setText(format(String.valueOf(answer)));
@@ -179,7 +182,7 @@ public class Functions extends Vars {
 
     }
 
-    public static String changeOperator(String equation, Operator operator) {
+    public static String removeOperator(String equation, Operator operator) {
         char[] equationChar = equation.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -187,11 +190,15 @@ public class Functions extends Vars {
             stringBuilder.append(equationChar[i]);
         }
 
-//        stringBuilder.append(" ").append(operator.operatorSign()).append(" ");
+        stringBuilder.append(" ").append(operator.operatorSign()).append(" ");
 
         equation = String.valueOf(stringBuilder);
 
         return  equation;
+    }
+
+    public static void resetOperator(boolean bool) {
+        hasOperator = bool;
     }
 
     public static String format(String number) {

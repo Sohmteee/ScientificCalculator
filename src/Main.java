@@ -126,8 +126,8 @@ public class Main extends Functions {
                 }
 
                 /*if the string is empty, number is set to "0"
-                * otherwise, number is set to the new string
-                * and then the number is displayed as the new input*/
+                 * otherwise, number is set to the new string
+                 * and then the number is displayed as the new input*/
                 number = new String(newInputString).isEmpty() ? "0" : new String(newInputString);
                 txtInput.setText(format(number));
 
@@ -224,8 +224,7 @@ public class Main extends Functions {
                 numberOfOpenParentheses--;
                 if (numberOfOpenParentheses != 0)
                     btnOpenParenthesis.setText("<html>(<sup> " + numberOfOpenParentheses + "</sup></html>");
-                else
-                    btnOpenParenthesis.setText("(");
+                else btnOpenParenthesis.setText("(");
 
             }
         });
@@ -251,6 +250,17 @@ public class Main extends Functions {
             if (!clearInput || shownAnswer) {
                 operator(divide);
                 resetBooleans();
+                resetOperator(true);
+
+            } else {
+                if (hasOperator) {
+                    txtOutput.setText(removeOperator(txtOutput.getText(), divide));
+                    resetBooleans();
+                } else {
+                    operator(divide);
+                    resetBooleans();
+                }
+                resetOperator(true);
             }
         });
         btnDivision.setBorder(null);
@@ -284,6 +294,7 @@ public class Main extends Functions {
                 }
             }
             txtInput.setText(format(number));
+            resetOperator(false);
 
         });
         btnSeven.setBorder(null);
@@ -305,6 +316,7 @@ public class Main extends Functions {
                 }
             }
             txtInput.setText(format(number));
+            resetOperator(false);
 
         });
         btnEight.setBorder(null);
@@ -326,6 +338,7 @@ public class Main extends Functions {
                 }
             }
             txtInput.setText(format(number));
+            resetOperator(false);
 
         });
         btnNine.setBorder(null);
@@ -340,6 +353,17 @@ public class Main extends Functions {
             if (!clearInput || shownAnswer) {
                 operator(multiply);
                 resetBooleans();
+                resetOperator(true);
+
+            } else {
+                if (hasOperator) {
+                    txtOutput.setText(removeOperator(txtOutput.getText(), multiply));
+                    resetBooleans();
+                } else {
+                    operator(multiply);
+                    resetBooleans();
+                }
+                resetOperator(true);
             }
         });
         btnMultiplication.setBorder(null);
@@ -373,6 +397,7 @@ public class Main extends Functions {
                 }
             }
             txtInput.setText(format(number));
+            resetOperator(false);
 
         });
         btnFour.setBorder(null);
@@ -394,6 +419,7 @@ public class Main extends Functions {
                 }
             }
             txtInput.setText(format(number));
+            resetOperator(false);
 
         });
         btnFive.setBorder(null);
@@ -415,6 +441,7 @@ public class Main extends Functions {
                 }
             }
             txtInput.setText(format(number));
+            resetOperator(false);
 
         });
         btnSix.setBorder(null);
@@ -429,6 +456,17 @@ public class Main extends Functions {
             if (!clearInput || shownAnswer) {
                 operator(subtract);
                 resetBooleans();
+                resetOperator(true);
+
+            } else {
+                if (hasOperator) {
+                    txtOutput.setText(removeOperator(txtOutput.getText(), subtract));
+                    resetBooleans();
+                } else {
+                    operator(subtract);
+                    resetBooleans();
+                }
+                resetOperator(true);
             }
         });
         btnSubtraction.setBorder(null);
@@ -462,6 +500,7 @@ public class Main extends Functions {
                 }
             }
             txtInput.setText(format(number));
+            resetOperator(false);
 
         });
         btnOne.setBorder(null);
@@ -483,6 +522,7 @@ public class Main extends Functions {
                 }
             }
             txtInput.setText(format(number));
+            resetOperator(false);
 
         });
         btnTwo.setBorder(null);
@@ -504,6 +544,7 @@ public class Main extends Functions {
                 }
             }
             txtInput.setText(format(number));
+            resetOperator(false);
 
         });
         btnThree.setBorder(null);
@@ -518,7 +559,17 @@ public class Main extends Functions {
             if (!clearInput || shownAnswer) {
                 operator(add);
                 resetBooleans();
+                resetOperator(true);
 
+            } else {
+                if (hasOperator) {
+                    txtOutput.setText(removeOperator(txtOutput.getText(), add));
+                    resetBooleans();
+                } else {
+                    operator(add);
+                    resetBooleans();
+                }
+                resetOperator(true);
             }
         });
         btnAddition.setBorder(null);
@@ -593,6 +644,12 @@ public class Main extends Functions {
         btnDot.addActionListener(e -> {
             if (!isDecimal || txtInput.getText().equals("0")) {
                 btnC.setText("CE");
+
+                if (clearInput) {
+                    txtInput.setText("0");
+                    number = "0";
+                }
+
                 number += ".";
                 txtInput.setText(format(number));
                 isDecimal = true;
@@ -613,6 +670,7 @@ public class Main extends Functions {
                 resetBooleans();
                 answer = 0;
                 nextNumber = 0;
+                System.out.println(number);
             }
         });
         btnEquals.setBorder(null);
