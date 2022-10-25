@@ -646,7 +646,6 @@ public class Main extends Functions {
                 btnC.setText("CE");
 
                 if (clearInput) {
-                    txtInput.setText("0");
                     number = "0";
                 }
 
