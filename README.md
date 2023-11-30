@@ -1,4 +1,4 @@
-# ScientificCalculator
+# Scientific Calculator
 So far, these are the functions available: 
 1. Basic arithmetic operations (+, -, *, and /). These operations comply to the BODMAS rule
 2. Signing and un-signing numbers with the ± button
