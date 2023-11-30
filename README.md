@@ -1,7 +1,7 @@
 # ScientificCalculator
 So far, these are the functions available: 
-1. Basic arithematic operations (+, -, *, and /). These operations comply to the BODMAS rule
-2. Signing and unsigning numbers with the ± button
+1. Basic arithmetic operations (+, -, *, and /). These operations comply to the BODMAS rule
+2. Signing and un-signing numbers with the ± button
 3. The "C" button can be used to clear the display or the "del" button can be used to delete one digit at a time from right to left
 4. The "." for creating decimals
 
